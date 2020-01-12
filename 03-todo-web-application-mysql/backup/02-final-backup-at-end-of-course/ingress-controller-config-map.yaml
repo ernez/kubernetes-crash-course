@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
+data:
+  metadata.name: "nginx-ingress"
+  metadata.namespace: "default"
