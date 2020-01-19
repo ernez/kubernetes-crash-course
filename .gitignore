@@ -9,7 +9,7 @@
 .settings/*
 *.swo
 *.swp
-target/*
+*/target/*
 tomcat_deployment_descriptor
 logger.properties
 *.iml

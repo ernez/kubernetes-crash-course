@@ -141,3 +141,30 @@ create table hibernate_sequence (next_val bigint) engine=InnoDB
 insert into hibernate_sequence values ( 1 )
 create table todo (id integer not null, description varchar(255), is_done bit not null, target_date datetime(6), user varchar(255), primary key (id)) engine=InnoDB
 ```
+
+
+************************************
+
+Ernez:
+kubectl exec -it mysql-57dd54d9b4-jxztq bash
+
+mysql -u todos-user -p todos
+Enter password: --> type dummytodos
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.28 MySQL Community Server (GPL)
+
+use todos;
+select * from todo;
+
+....
+
+http://192.168.64.17:30701/list-todos
+
+kubectl scale --replicas 2 deployment todo-web-application
+
+....
+kubectl get nodes -o wide
+
+Preko Ingress-a:
+http://192.168.64.17/list-todos

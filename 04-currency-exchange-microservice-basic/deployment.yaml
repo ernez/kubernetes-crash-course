@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -6,7 +6,7 @@ metadata:
   name: currency-exchange
   namespace: default
 spec:
-  replicas: 1 #CHANGE
+  replicas: 2 #CHANGE (bilo je 1)
   minReadySeconds: 45
   selector:
     matchLabels:
@@ -22,7 +22,7 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: in28min/currency-exchange:0.0.1-RELEASE #CHANGE
+      - image: ernezdocker/currency-exchange:0.0.1-RELEASE #CHANGE
         imagePullPolicy: IfNotPresent
         name: currency-exchange
         ports:
@@ -61,11 +61,11 @@ metadata:
   namespace: default
 spec:
   ports:
-  - # nodePort: 30702 #CHANGE
+  - nodePort: 30702 #CHANGE (na kraju treba biti komentirano)
     port: 8000 #CHANGE
     protocol: TCP
     targetPort: 8000 #CHANGE
   selector:
     app: currency-exchange
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort #CHANGE (na kraju trebva biti LoadBalancer)
